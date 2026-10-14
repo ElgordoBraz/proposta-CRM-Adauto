@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto CRM | Pós-Venda e Reativação — Drogaria Beta Farma · Único Contato</title>
+<meta name="description" content="Documento executivo do Projeto CRM — Pós-venda e Reativação. Drogaria Beta Farma · Único Contato. Fase 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+<style>
+/* ============ BASE ============ */
+:root{
+  --bg:#F5F3EE; --card:#FFFFFF; --line:#E8E4DD;
+  --green:#22C55E; --green-d:#15803D; --green-h:#1EB054; --wa:#25D366;
+  --navy:#0D2240; --ink:#0D0D0D; --deep:#050911;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.7 'Manrope',system-ui,sans-serif}
+::selection{background:rgba(34,197,94,.25)}
+h1,h2,h3,.disp{font-family:'Sora',sans-serif}
+img,svg{display:block}
+a{color:inherit}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+.sec{padding:88px 0}
+.hl{color:var(--green)}
+.muted{color:rgba(13,13,13,.6)}
+
+/* ============ COMPONENTES ============ */
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,.13);color:var(--green-d);font:600 12px/1 'Manrope';letter-spacing:.08em;text-transform:uppercase;padding:9px 15px;border-radius:999px}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--green);flex:none}
+.badge.b-line{background:#fff;border:1px solid var(--line);color:rgba(13,13,13,.6)}
+.badge.b-line i{background:var(--navy)}
+.badge.b-navy{background:rgba(13,34,64,.07);color:var(--navy)}
+.badge.b-navy i{background:var(--navy)}
+.sec-head{text-align:center;max-width:780px;margin:0 auto 52px}
+.sec-head h2{font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.18;margin:18px 0 14px}
+.lead{font-size:17px;color:rgba(13,13,13,.6);max-width:720px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:28px 32px;box-shadow:0 12px 32px rgba(13,34,64,.05)}
+.card h3{font-size:18px;font-weight:700}
+.card p{color:rgba(13,13,13,.6);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:600 14px 'Manrope';color:rgba(13,13,13,.75)}
+.note{background:#fff;border:1px solid var(--line);border-left:3px solid var(--green);border-radius:14px;padding:16px 20px;font-size:14.5px;color:rgba(13,13,13,.65)}
+.note strong{color:var(--ink)}
+.navy{background:var(--navy);border-radius:30px;padding:56px;color:#fff}
+.navy .card-t{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px 24px}
+.ic{width:44px;height:44px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+.ic svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ic.sm{width:34px;height:34px}
+.ic.sm svg{width:16px;height:16px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font:700 15px 'Manrope';padding:15px 28px;border-radius:999px;text-decoration:none;box-shadow:0 10px 28px rgba(34,197,94,.35);transition:background .2s,transform .2s}
+.btn:hover{background:var(--green-h);transform:translateY(-1px)}
+.btn .ar{font-weight:800}
+.btn-sec{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--navy);color:var(--navy);font:700 14px 'Manrope';padding:13px 24px;border-radius:999px;text-decoration:none;transition:background .2s}
+.btn-sec:hover{background:rgba(13,34,64,.05)}
+.rev{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rev.on{opacity:1;transform:none}
+
+/* ============ CAPA ============ */
+.cover{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:70px 24px;position:relative}
+.cover-logo{width:212px;margin:0 auto 40px;opacity:.96}
+.cover h1{font-size:56px;font-weight:800;letter-spacing:-.02em;line-height:1.05}
+.cover h2{font-size:19px;font-weight:700;color:var(--navy);margin:16px 0 6px;letter-spacing:.02em}
+.cover .cliente{font-size:15px;color:rgba(13,13,13,.55);font-weight:600}
+.cover-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.cover-dev{margin-top:44px;font:600 12px 'Manrope';letter-spacing:.14em;text-transform:uppercase;color:rgba(13,13,13,.5)}
+.cover-foot{position:absolute;bottom:26px;left:0;right:0;font:600 11px 'Manrope';letter-spacing:.12em;text-transform:uppercase;color:rgba(13,13,13,.38);padding:0 20px}
+
+/* ============ SEÇÕES ESPECÍFICAS ============ */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.obj-card{border-top:3px solid var(--green);padding:34px 36px}
+.obj-card .q{font-family:'Sora';font-size:21px;font-weight:700;line-height:1.45;letter-spacing:-.01em}
+.obj-list{list-style:none;display:grid;gap:12px;margin-top:22px}
+.obj-list li{display:flex;gap:12px;align-items:flex-start;font:600 15px 'Manrope';color:rgba(13,13,13,.78)}
+.obj-list li::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);margin-top:7px;flex:none}
+.scope-nums{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:34px 0 26px}
+.scope-nums .n{font-family:'Sora';font-size:64px;font-weight:800;color:var(--navy);line-height:1}
+.scope-nums .t{text-align:left;font:600 14px/1.4 'Manrope';color:rgba(13,13,13,.6)}
+.wa-dots{display:flex;gap:10px;justify-content:center}
+.wa-dots span{width:44px;height:44px;border-radius:50%;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.35);display:grid;place-items:center}
+.wa-dots svg{width:18px;height:18px;stroke:var(--green-d);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* fluxo vertical */
+.flow{max-width:660px;margin:0 auto;display:flex;flex-direction:column;align-items:stretch}
+.f-node{background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 20px;text-align:center;font:600 15px 'Manrope';box-shadow:0 6px 18px rgba(13,34,64,.04)}
+.f-node small{display:block;font:600 11px 'Manrope';letter-spacing:.1em;text-transform:uppercase;color:rgba(13,13,13,.45);margin-bottom:3px}
+.f-node.green{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.08);color:var(--green-d)}
+.f-node.navy{background:var(--navy);border-color:var(--navy);color:#fff}
+.f-arrow{width:2px;height:24px;background:var(--line);margin:2px auto;position:relative}
+.f-arrow::after{content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top:6px solid var(--line);border-bottom:0}
+.f-branch{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
+.f-b{border-radius:16px;padding:16px 18px;font:600 13.5px/1.55 'Manrope';text-align:center}
+.f-b .tag{display:inline-block;font:800 11px 'Manrope';letter-spacing:.1em;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+.f-b.yes{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.4);color:var(--green-d)}
+.f-b.yes .tag{background:var(--green);color:#fff}
+.f-b.no{background:#fff;border:1px solid var(--line);color:rgba(13,13,13,.6)}
+.f-b.no .tag{background:var(--navy);color:#fff}
+
+/* mensagens mock */
+.chat{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 12px 32px rgba(13,34,64,.05)}
+.chat .head{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.chat .head .av{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:800 13px 'Sora'}
+.chat .head .nm{font:700 14px 'Manrope'}
+.chat .head .st{font:600 11px 'Manrope';color:rgba(13,13,13,.45)}
+.bubble{max-width:88%;background:var(--bg);border:1px solid var(--line);border-radius:4px 16px 16px 16px;padding:13px 16px;font-size:14px;line-height:1.6;color:rgba(13,13,13,.85)}
+.bubble + .bubble{margin-top:10px}
+.bubble .tm{display:block;text-align:right;font:600 10.5px 'Manrope';color:rgba(13,13,13,.4);margin-top:6px}
+.bubble .tg{display:inline-block;font:800 10px 'Manrope';letter-spacing:.08em;text-transform:uppercase;color:var(--green-d);background:rgba(34,197,94,.13);border-radius:999px;padding:3px 9px;margin-bottom:7px}
+
+/* prazos */
+.deadlines{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:820px;margin:0 auto}
+.dl{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;text-align:center}
+.dl .k{font:800 11px 'Manrope';letter-spacing:.12em;text-transform:uppercase;color:rgba(13,13,13,.45)}
+.dl .v{font-family:'Sora';font-size:19px;font-weight:700;color:var(--navy);margin:8px 0 4px}
+.dl .d{font:600 12.5px 'Manrope';color:rgba(13,13,13,.55)}
+
+/* ciclos pós-venda */
+.cycle{background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 12px 32px rgba(13,34,64,.05)}
+.cycle .top{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.cycle .top h3{font-size:18px}
+.cycle .top p{font-size:13px;color:rgba(13,13,13,.55)}
+.cycle .days{font:800 11px 'Manrope';letter-spacing:.1em;color:var(--green-d);background:rgba(34,197,94,.13);padding:5px 12px;border-radius:999px;margin-left:auto;white-space:nowrap}
+.tl{display:flex;align-items:flex-start}
+.tl .stop{flex:1;position:relative;text-align:center;padding:0 4px}
+.tl .stop::before{content:"";position:absolute;top:9px;left:-50%;width:100%;height:2px;background:var(--line)}
+.tl .stop:first-child::before{display:none}
+.tl .dot{width:18px;height:18px;border-radius:50%;background:#fff;border:2.5px solid var(--green);margin:0 auto 10px;position:relative;z-index:1}
+.tl .stop.start .dot,.tl .stop.end .dot{background:var(--navy);border-color:var(--navy)}
+.tl .lb{font:800 12.5px 'Manrope';color:var(--navy)}
+.tl .ds{font:600 11.5px/1.45 'Manrope';color:rgba(13,13,13,.55);margin-top:3px}
+.chain{margin-top:20px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:11px 14px;font:700 12.5px 'Manrope';color:var(--navy);text-align:center;letter-spacing:.02em}
+.chain em{font-style:normal;color:var(--green-d)}
+
+/* tom de voz */
+.tone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tone .role{font:800 11px 'Manrope';letter-spacing:.1em;text-transform:uppercase;color:var(--green-d);margin:14px 0 4px}
+
+/* regras */
+.rule{display:flex;gap:20px;align-items:flex-start}
+.rule + .rule{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.rule h3{margin-bottom:6px}
+.rule p{font-size:14.5px}
+
+/* limitação */
+.limit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;margin-top:34px}
+.limit-grid h3{font-size:17px;margin-bottom:10px}
+.limit-grid p{font-size:14.5px;line-height:1.65;color:rgba(255,255,255,.75)}
+.limit-grid .now{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:26px}
+.limit-grid .fut{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);border-radius:16px;padding:26px}
+.limit-grid .fut h3 span{color:var(--green)}
+
+/* resultados */
+.res-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;margin-top:34px}
+.res-list li{display:flex;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;font:600 14.5px/1.5 'Manrope';color:rgba(13,13,13,.78)}
+.res-list svg{width:18px;height:18px;stroke:var(--green-d);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:2px}
+.quote{margin:44px auto 0;max-width:640px;text-align:center;font-family:'Sora';font-weight:800;font-size:24px;letter-spacing:-.01em;line-height:1.4;color:var(--navy)}
+.quote span{color:var(--green)}
+
+/* investimento */
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:760px;margin:0 auto}
+.inv{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px;text-align:center;box-shadow:0 12px 32px rgba(13,34,64,.05)}
+.inv .k{font:800 11px 'Manrope';letter-spacing:.14em;text-transform:uppercase;color:rgba(13,13,13,.45)}
+.inv .v{font-family:'Sora';font-size:36px;font-weight:800;color:var(--navy);margin:12px 0 6px;letter-spacing:-.02em}
+.inv .v small{font-size:16px;font-weight:700;color:rgba(13,13,13,.5)}
+.inv .d{font:600 13.5px 'Manrope';color:rgba(13,13,13,.55)}
+.inv.sum{grid-column:1/-1;background:var(--navy);border-color:var(--navy)}
+.inv.sum .v{color:#fff;font-size:20px;line-height:1.5}
+.inv.sum .v em{font-style:normal;color:var(--green)}
+.inv.sum .d{color:rgba(255,255,255,.7)}
+
+/* inclusão */
+.inc{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}
+.inc li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;font:600 14.5px 'Manrope';color:rgba(13,13,13,.78)}
+.inc li svg{width:17px;height:17px;stroke:var(--green-d);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none;margin-top:3px}
+
+/* futuro */
+.fut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.fut{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:22px}
+.fut .n{font:800 11px 'Manrope';letter-spacing:.12em;color:var(--green)}
+.fut h3{font-size:16px;margin:10px 0 6px;color:#fff}
+.fut p{font-size:13px;color:rgba(255,255,255,.7)}
+
+/* fluxograma / encerramento */
+.flow-cta{max-width:640px;margin:0 auto;text-align:center;background:#fff;border:1px solid var(--line);border-radius:24px;padding:44px 36px;box-shadow:0 12px 32px rgba(13,34,64,.05)}
+.flow-cta p{font-size:14px;color:rgba(13,13,13,.55);margin:12px 0 26px}
+.close{text-align:center}
+.close p{font-family:'Sora';font-weight:700;font-size:20px;line-height:1.55;letter-spacing:-.01em;max-width:760px;margin:0 auto 22px}
+.close p span{color:var(--green)}
+.close .sig{margin-top:44px;padding-top:30px;border-top:1px solid rgba(255,255,255,.14)}
+.close .sig img{width:150px;margin:0 auto 14px;filter:brightness(0) invert(1);opacity:.95}
+.close .sig .a{font:800 15px 'Manrope';letter-spacing:.06em}
+.close .sig .b{font:600 12px 'Manrope';letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:5px}
+.foot{padding:34px 0 44px;text-align:center;font:600 11px 'Manrope';letter-spacing:.12em;text-transform:uppercase;color:rgba(13,13,13,.4)}
+
+/* ============ RESPONSIVO ============ */
+@media (max-width:900px){
+  .grid2,.grid3,.grid4,.tone-grid,.deadlines,.inv-grid,.limit-grid,.res-list,.inc,.fut-grid{grid-template-columns:1fr}
+  .sec{padding:64px 0}
+  .sec-head h2{font-size:29px}
+  .cover h1{font-size:40px}
+  .navy{padding:36px 24px;border-radius:24px}
+  .scope-nums .n{font-size:48px}
+  .tl .ds{font-size:10px}
+  .quote{font-size:20px}
+}
+/* ============ IMPRESSÃO ============ */
+@page{margin:13mm}
+@media print{
+  body{background:#fff}
+  .rev{opacity:1;transform:none;transition:none}
+  .sec{padding:44px 0}
+  .cover{min-height:auto;padding:60px 0 40px;break-after:page}
+  .break{break-before:page}
+  .card,.cycle,.chat,.f-node,.inv,.fut,.rule,.dl,.tl,.note,.f-b,.inc li,.res-list li{break-inside:avoid}
+  .sec-head{break-after:avoid}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Símbolos de ícones (outline) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5Z"/><path d="M9 10a4 4 0 0 0 6 3.5"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-slid" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/><path d="M1 14h6M9 8h6M17 16h6"/></symbol>
+  <symbol id="i-serv" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><path d="M6 6.5h.01M6 17.5h.01"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 5v14c0 1.7-4 3-9 3s-9-1.3-9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 17l.8 2.2L22 20l-2.2.8L19 23l-.8-2.2L16 20l2.2-.8z"/></symbol>
+  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><path d="M7.5 7.5h.01"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9h18v11H3z"/><path d="M9 20v-6h6v6"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+</svg>
+
+<!-- ==================== 01 · CAPA ==================== -->
+<header class="cover">
+  <div>
+    <!-- Logo Único Contato -->
+    <img class="cover-logo" alt="Único Contato" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20880%20400'%3E%3Cg%20fill='none'%20stroke='%230D2240'%20stroke-width='26'%3E%3Ccircle%20cx='190'%20cy='200'%20r='112'/%3E%3Ccircle%20cx='190'%20cy='200'%20r='64'/%3E%3C/svg%3E%3Cg%20stroke='%23FFFFFF'%20stroke-width='16'%3E%3Cpath%20d='M190%2082v236M78%20200h224'/%3E%3C/svg%3E%3Cg%20fill='%230D2240'%20font-family='Arial,%20Helvetica,%20sans-serif'%20font-weight='800'%3E%3Ctext%20x='330'%20y='152'%20font-size='58'%20letter-spacing='10'%3EGRUPO%3C/text%3E%3Ctext%20x='326'%20y='252'%20font-size='104'%20letter-spacing='4'%3E%C3%9ANICO%3C/text%3E%3Ctext%20x='332'%20y='308'%20font-size='50'%20letter-spacing='2'%3ECONTATO%3C/text%3E%3C/svg%3E">
+    <div class="cover-meta">
+      <span class="badge b-line"><i></i>Documento de Projeto · Fase 1</span>
+    </div>
+    <h1 style="margin-top:34px">PROJETO <span class="hl">CRM</span></h1>
+    <h2>Pós-venda e Reativação</h2>
+    <p class="cliente">Drogaria Beta Farma</p>
+    <p class="cover-dev">Desenvolvido por Único Contato</p>
+  </div>
+  <p class="cover-foot">Documento executivo · Uso interno e apresentação ao cliente</p>
+</header>
+
+<!-- ==================== 02 · VISÃO GERAL ==================== -->
+<section class="sec break" id="s02">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>02 · Visão geral</span>
+      <h2>Visão geral do <span class="hl">projeto</span></h2>
+      <p class="lead">A Drogaria Beta Farma já utiliza o Único Contato em sua operação e busca ampliar o uso da tecnologia para reduzir o trabalho manual de acompanhamento dos clientes e melhorar o relacionamento após o atendimento e após a compra.</p>
+    </div>
+    <div class="grid2 rev">
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <span class="ic"><svg><use href="#i-clock"/></svg></span>
+        <div><h3>Reativação de orçamentos</h3><p style="margin-top:6px">Recuperação estruturada de oportunidades que ficaram sem resposta após o envio do orçamento.</p></div>
+      </div>
+      <div class="card" style="display:flex;gap:18px;align-items:flex-start">
+        <span class="ic"><svg><use href="#i-chat"/></svg></span>
+        <div><h3>Pós-venda automatizado</h3><p style="margin-top:6px">Rotina de relacionamento após a compra, com cadências planejadas por ciclo de consumo.</p></div>
+      </div>
+    </div>
+    <div class="card rev" style="max-width:760px;margin:20px auto 0;text-align:center">
+      <p style="font-size:15.5px">A proposta é criar uma rotina estruturada de relacionamento pelo WhatsApp, com contatos planejados, acompanhamento das respostas e interrupção automática das jornadas quando o cliente retornar à conversa.</p>
+      <p style="margin-top:14px;font-weight:700;color:var(--navy);font-size:15px">O projeto aumenta consistência e eficiência operacional — sem substituir o atendimento humano.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 03 · OBJETIVO ==================== -->
+<section class="sec" id="s03">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>03 · Objetivo</span>
+      <h2>O que este projeto <span class="hl">persegue</span></h2>
+    </div>
+    <div class="card obj-card rev">
+      <span class="badge b-navy"><i></i>Objetivo principal</span>
+      <p class="q" style="margin-top:18px">Automatizar o relacionamento com clientes em momentos estratégicos da jornada, aumentando a capacidade de acompanhar oportunidades e estimular novas compras <span class="hl">sem sobrecarregar a equipe</span>.</p>
+      <ul class="obj-list">
+        <li>Reduzir acompanhamentos manuais</li>
+        <li>Recuperar oportunidades que ficaram sem resposta</li>
+        <li>Estruturar o pós-venda</li>
+        <li>Criar cadências de relacionamento</li>
+        <li>Facilitar a recompra</li>
+        <li>Manter o atendimento humano como parte central da operação</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 04 · ESCOPO ==================== -->
+<section class="sec break" id="s04">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>04 · Escopo</span>
+      <h2>Escopo da <span class="hl">Fase 1</span></h2>
+    </div>
+    <div class="navy rev" style="text-align:center">
+      <span class="badge" style="background:rgba(34,197,94,.16)"><i></i>Fase 1</span>
+      <h3 style="font-size:26px;font-weight:800;margin:18px 0 8px">Reativação de orçamentos <span style="color:var(--green)">+</span> Pós-venda</h3>
+      <p style="color:rgba(255,255,255,.75);font-size:15px;max-width:560px;margin:0 auto">A primeira etapa do projeto contempla a operação construída inicialmente dentro deste escopo:</p>
+      <div class="scope-nums">
+        <span class="n">4</span>
+        <span class="t" style="color:rgba(255,255,255,.75)">números de WhatsApp<br>contemplados nesta fase</span>
+      </div>
+      <div class="wa-dots" aria-hidden="true">
+        <span><svg><use href="#i-wa"/></svg></span>
+        <span><svg><use href="#i-wa"/></svg></span>
+        <span><svg><use href="#i-wa"/></svg></span>
+        <span><svg><use href="#i-wa"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 05 · FLUXO 1 ==================== -->
+<section class="sec" id="s05">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>05 · Fluxo 1</span>
+      <h2>Reativação de <span class="hl">orçamentos</span></h2>
+      <p class="lead">Jornada de recuperação de oportunidades que ficaram sem resposta, com interrupção automática quando o cliente retorna.</p>
+    </div>
+
+    <div class="flow rev">
+      <div class="f-node navy"><small>Evento inicial</small>Orçamento enviado</div>
+      <div class="f-arrow"></div>
+      <div class="f-node"><small>Condição</small>Cliente não responde</div>
+      <div class="f-arrow"></div>
+      <div class="f-node green"><small>Etapa 1</small>Follow-up 1</div>
+      <div class="f-arrow"></div>
+      <div class="f-node"><small>Decisão</small>Cliente respondeu?</div>
+      <div class="f-branch">
+        <div class="f-b yes"><span class="tag">SIM</span><br>Interrompe a automação → atendimento humano</div>
+        <div class="f-b no"><span class="tag">NÃO</span><br>Aguardar novo intervalo</div>
+      </div>
+      <div class="f-arrow"></div>
+      <div class="f-node green"><small>Etapa 2</small>Follow-up 2</div>
+      <div class="f-arrow"></div>
+      <div class="f-node"><small>Decisão</small>Cliente respondeu?</div>
+      <div class="f-branch">
+        <div class="f-b yes"><span class="tag">SIM</span><br>Interrompe a automação → atendimento humano</div>
+        <div class="f-b no"><span class="tag">NÃO</span><br>Aguardar novo intervalo</div>
+      </div>
+      <div class="f-arrow"></div>
+      <div class="f-node green"><small>Etapa final</small>Pesquisa de motivo da não compra</div>
+      <div class="f-arrow"></div>
+      <div class="f-node navy"><small>Conclusão</small>Registrar resposta / encerrar oportunidade</div>
+    </div>
+
+    <div class="grid3 rev" style="margin-top:56px">
+      <div class="card"><span class="badge b-navy" style="margin-bottom:12px"><i></i>Follow-up 1</span><h3>Retomada de conversa</h3><p style="margin-top:6px">Mensagem curta, humanizada e comercial. Objetivo: retomar a conversa, tirar dúvidas e tentar recuperar a venda.</p></div>
+      <div class="card"><span class="badge b-navy" style="margin-bottom:12px"><i></i>Follow-up 2</span><h3>Verificação</h3><p style="margin-top:6px">Mensagem curta. Objetivo: verificar se o cliente já comprou em outro local ou se algo pode ser ajustado para concluir a compra.</p></div>
+      <div class="card"><span class="badge b-navy" style="margin-bottom:12px"><i></i>Pesquisa de motivo</span><h3>Aprendizado</h3><p style="margin-top:6px">Mensagem curta e humanizada. Objetivo: entender o motivo da não compra e registrar essa informação para análise da operação.</p></div>
+    </div>
+
+    <div class="rev" style="margin-top:56px">
+      <h3 style="text-align:center;font-size:20px;font-weight:800;margin-bottom:22px">Prazos de <span class="hl">referência</span></h3>
+      <div class="deadlines">
+        <div class="dl"><span class="k">Follow-up 1</span><p class="v">Horas</p><p class="d">algumas horas após o orçamento</p></div>
+        <div class="dl"><span class="k">Follow-up 2</span><p class="v">~ 1 dia</p><p class="d">aproximadamente 1 dia depois</p></div>
+        <div class="dl"><span class="k">Pesquisa de motivo</span><p class="v">~ 2 dias</p><p class="d">aproximadamente 2 dias depois</p></div>
+      </div>
+      <div class="note" style="max-width:680px;margin:22px auto 0;text-align:center"><strong>Os intervalos são ajustáveis.</strong> Os intervalos definitivos serão calibrados em conjunto com a Beta Farma durante a implantação.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 06 · FLUXO 2 ==================== -->
+<section class="sec break" id="s06">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>06 · Fluxo 2</span>
+      <h2>Pós-venda por <span class="hl">ciclo de consumo</span></h2>
+      <p class="lead">Jornadas diferentes de acordo com o ciclo estimado de consumo do produto — do consumo rápido ao uso prolongado.</p>
+    </div>
+    <div class="grid2 rev">
+      <div class="cycle">
+        <div class="top"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><h3>Ciclo de 10 dias</h3><p>Consumo rápido · ex.: fraldas</p></div><span class="days">2 contatos</span></div>
+        <div class="tl">
+          <div class="stop start"><div class="dot"></div><div class="lb">Compra</div><div class="ds">início da jornada</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 1</div><div class="ds">relacionamento e acompanhamento da compra</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 8</div><div class="ds">contato próximo da recompra</div></div>
+          <div class="stop end"><div class="dot"></div><div class="lb">Nova oportunidade</div><div class="ds">recompra</div></div>
+        </div>
+        <div class="chain">Compra → Dia 1 → Dia 8 → <em>Nova oportunidade</em></div>
+      </div>
+      <div class="cycle">
+        <div class="top"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><h3>Ciclo de 30 dias</h3><p>Uso mensal</p></div><span class="days">3 contatos</span></div>
+        <div class="tl">
+          <div class="stop start"><div class="dot"></div><div class="lb">Compra</div><div class="ds">início</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 1</div><div class="ds">relacionamento pós-venda</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 15</div><div class="ds">acompanhamento da satisfação</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 28</div><div class="ds">contato próximo da recompra</div></div>
+          <div class="stop end"><div class="dot"></div><div class="lb">Nova oportunidade</div><div class="ds">recompra</div></div>
+        </div>
+        <div class="chain">Compra → Dia 1 → Dia 15 → Dia 28 → <em>Nova oportunidade</em></div>
+      </div>
+      <div class="cycle">
+        <div class="top"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><h3>Ciclo de 60 dias</h3><p>Jornada longa</p></div><span class="days">4 contatos</span></div>
+        <div class="tl">
+          <div class="stop start"><div class="dot"></div><div class="lb">Compra</div><div class="ds">início</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 1</div><div class="ds">relacionamento</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 20</div><div class="ds">acompanhamento</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 40</div><div class="ds">novo acompanhamento / suporte</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 55</div><div class="ds">recompra</div></div>
+          <div class="stop end"><div class="dot"></div><div class="lb">Nova oportunidade</div><div class="ds">—</div></div>
+        </div>
+        <div class="chain">Compra → Dia 1 → Dia 20 → Dia 40 → Dia 55 → <em>Nova oportunidade</em></div>
+      </div>
+      <div class="cycle">
+        <div class="top"><span class="ic"><svg><use href="#i-clock"/></svg></span><div><h3>Ciclo de 90 dias</h3><p>Uso prolongado</p></div><span class="days">4 contatos</span></div>
+        <div class="tl">
+          <div class="stop start"><div class="dot"></div><div class="lb">Compra</div><div class="ds">início</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 1</div><div class="ds">relacionamento</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 30</div><div class="ds">check-in</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 60</div><div class="ds">check-in</div></div>
+          <div class="stop"><div class="dot"></div><div class="lb">Dia 85</div><div class="ds">recompra</div></div>
+          <div class="stop end"><div class="dot"></div><div class="lb">Nova oportunidade</div><div class="ds">—</div></div>
+        </div>
+        <div class="chain">Compra → Dia 1 → Dia 30 → Dia 60 → Dia 85 → <em>Nova oportunidade</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 07 · TOM ==================== -->
+<section class="sec" id="s07">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>07 · Comunicação</span>
+      <h2>Tom das <span class="hl">mensagens</span></h2>
+      <p class="lead">A lógica da comunicação em cada momento da jornada — curta, humana e pouco invasiva.</p>
+    </div>
+    <div class="tone-grid rev">
+      <div class="chat">
+        <div class="head"><span class="av">B</span><div><div class="nm">Beta Farma</div><div class="st">WhatsApp · operacional</div></div></div>
+        <div class="bubble"><span class="tg">Primeiro contato · Relacionamento</span>Oi, [nome]! Passando para saber se deu tudo certo com sua compra e se o produto atendeu ao que você precisava.<span class="tm">09:12</span></div>
+      </div>
+      <div class="chat">
+        <div class="head"><span class="av">B</span><div><div class="nm">Beta Farma</div><div class="st">WhatsApp · operacional</div></div></div>
+        <div class="bubble"><span class="tg">Contato intermediário · Acompanhamento</span>Oi, [nome]! Tudo certo por aí? Passando só para acompanhar como está sendo a experiência com sua compra.<span class="tm">14:40</span></div>
+      </div>
+      <div class="chat">
+        <div class="head"><span class="av">B</span><div><div class="nm">Beta Farma</div><div class="st">WhatsApp · operacional</div></div></div>
+        <div class="bubble"><span class="tg">Próximo da recompra · Facilitação</span>Oi, [nome]! Está chegando a hora de repor seu produto. Quer que a gente já deixe seu pedido encaminhado?<span class="tm">10:05</span></div>
+      </div>
+    </div>
+    <div class="rev" style="margin-top:34px">
+      <div class="chips">
+        <span class="chip">Curta</span><span class="chip">Humana</span><span class="chip">Objetiva</span><span class="chip">Natural</span><span class="chip">Pouco invasiva</span><span class="chip">Sem aparência de robô</span>
+      </div>
+      <div class="note" style="max-width:720px;margin:24px auto 0;text-align:center">Os exemplos acima demonstram <strong>tom e lógica</strong> — não são necessariamente os textos finais. As mensagens definitivas serão construídas e ajustadas durante a implantação.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 08 · REGRAS ==================== -->
+<section class="sec break" id="s08">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>08 · Regras operacionais</span>
+      <h2>Regras de <span class="hl">funcionamento</span></h2>
+    </div>
+    <div class="card rev" style="max-width:820px;margin:0 auto">
+      <div class="rule">
+        <span class="ic"><svg><use href="#i-user"/></svg></span>
+        <div><h3>Interrupção automática</h3><p>Se o cliente responder durante qualquer etapa de uma jornada, a automação é interrompida para permitir que a equipe humana assuma o atendimento.</p>
+        <div class="chips" style="justify-content:flex-start;margin-top:14px"><span class="chip">Cliente respondeu</span><span class="chip" style="border-color:rgba(34,197,94,.5);color:var(--green-d)">Automação interrompida</span><span class="chip" style="border-color:var(--navy);color:var(--navy)">Atendimento humano assume</span></div></div>
+      </div>
+      <div class="rule">
+        <span class="ic"><svg><use href="#i-slid"/></svg></span>
+        <div><h3>Calibração dos intervalos</h3><p>Os tempos apresentados são referências iniciais. Os intervalos exatos serão definidos durante a implantação, junto com a Beta Farma.</p></div>
+      </div>
+      <div class="rule">
+        <span class="ic"><svg><use href="#i-serv"/></svg></span>
+        <div><h3>Controle de horas <span class="badge b-line" style="margin-left:8px;vertical-align:middle"><i></i>Observação técnica</span></h3>
+        <p>Quando um fluxo utiliza períodos contados em horas — como “1 hora após a última mensagem” — existe uma dependência operacional da continuidade do servidor. Caso ocorra reinicialização do servidor, o histórico do intervalo em horas poderá ser perdido. Agendamentos configurados em <strong style="color:var(--ink)">dias</strong> permanecem preservados.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 09 · MENSAGERIA META ==================== -->
+<section class="sec" id="s09">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>09 · Mensageria Meta</span>
+      <h2>Custos variáveis de <span class="hl">mensageria</span></h2>
+      <p class="lead">As mensagens iniciadas pela empresa através de templates estão sujeitas às regras e tarifas da Meta.</p>
+    </div>
+    <div class="grid2 rev" style="max-width:880px;margin:0 auto;align-items:stretch">
+      <div class="card" style="text-align:center;display:flex;flex-direction:column;justify-content:center">
+        <span class="badge b-navy" style="align-self:center"><i></i>Faixa de referência</span>
+        <p style="font-family:'Sora';font-size:36px;font-weight:800;color:var(--navy);margin:16px 0 4px;letter-spacing:-.02em">R$ 0,07 – R$ 0,35</p>
+        <p style="font-size:14px">por mensagem · referência de planejamento, não um preço fixo</p>
+        <div class="chips" style="margin-top:18px"><span class="chip">Classificação aplicável</span><span class="chip">Volume de mensagens</span><span class="chip">Tarifas vigentes</span></div>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:12px">Classificação do template</h3>
+        <p>A classificação efetiva do template pode variar conforme a definição da Meta, especialmente entre as categorias:</p>
+        <div class="chips" style="justify-content:flex-start;margin:14px 0"><span class="chip" style="border-color:var(--navy);color:var(--navy)">Utilidade</span><span class="chip" style="border-color:rgba(34,197,94,.5);color:var(--green-d)">Marketing</span></div>
+        <p style="font-weight:700;color:var(--navy)">A classificação do template não é definida pela Único Contato.</p>
+      </div>
+    </div>
+    <div class="grid2 rev" style="max-width:880px;margin:20px auto 0">
+      <div class="note" style="text-align:center"><strong>A mensageria da Meta é um custo variável</strong> e não está incluída na mensalidade de R$ 200,00 do projeto.</div>
+      <div class="card" style="padding:22px 26px">
+        <h3 style="font-size:16px;margin-bottom:8px">Janela de atendimento</h3>
+        <p style="font-size:14px">Quando o cliente inicia ou responde uma conversa, existe uma janela de atendimento definida pelas regras da plataforma, dentro da qual a operação pode continuar o atendimento de acordo com as políticas vigentes. Mensagens iniciadas pela empresa fora dessa janela podem exigir template aprovado e estar sujeitas às cobranças aplicáveis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 10 · LIMITAÇÃO ==================== -->
+<section class="sec break" id="s10">
+  <div class="wrap">
+    <div class="navy rev">
+      <div style="text-align:center">
+        <span class="badge" style="background:rgba(34,197,94,.16)"><i></i>10 · Integração Alpha 7</span>
+        <h2 style="font-size:32px;font-weight:800;letter-spacing:-.02em;margin:18px 0 12px">Limitação atual da <span style="color:var(--green)">integração</span></h2>
+        <p style="color:rgba(255,255,255,.78);max-width:720px;margin:0 auto;font-size:16px">Atualmente, a integração disponível não permite consultar automaticamente o cadastro completo e o histórico de compras do cliente dentro do Alpha 7. Por isso, a Fase 1 não dependerá de uma consulta automática ao histórico passado de compras para definir as jornadas.</p>
+      </div>
+      <div class="limit-grid">
+        <div class="now">
+          <h3 style="color:#fff">Nesta fase</h3>
+          <p>As jornadas de pós-venda são definidas por ciclo estimado de consumo do produto, com cadências configuradas e calibradas junto à operação — sem dependência do histórico passado.</p>
+        </div>
+        <div class="fut">
+          <h3>Evolução <span>futura</span></h3>
+          <p>A possibilidade de consultar automaticamente cadastro e histórico de compras — e utilizar essas informações para personalizar as jornadas — poderá ser incorporada futuramente, conforme evolução técnica da integração. Uma etapa planejada de evolução do projeto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 11 · RESULTADOS ==================== -->
+<section class="sec" id="s11">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>11 · Resultados esperados</span>
+      <h2>Ganhos <span class="hl">operacionais</span> esperados</h2>
+      <p class="lead">Benefícios operacionais esperados com a implantação da Fase 1 — sem promessas de resultado financeiro.</p>
+    </div>
+    <ul class="res-list rev">
+      <li><svg><use href="#i-check"/></svg>Maior consistência no acompanhamento</li>
+      <li><svg><use href="#i-check"/></svg>Menos dependência de controles manuais</li>
+      <li><svg><use href="#i-check"/></svg>Recuperação de oportunidades que antes poderiam ser esquecidas</li>
+      <li><svg><use href="#i-check"/></svg>Maior organização do pós-venda</li>
+      <li><svg><use href="#i-check"/></svg>Estímulo à recompra</li>
+      <li><svg><use href="#i-check"/></svg>Relacionamento mais estruturado com a base</li>
+      <li style="grid-column:1/-1"><svg><use href="#i-check"/></svg>Equipe humana focada nos atendimentos que exigem intervenção</li>
+    </ul>
+    <p class="quote rev">“Automatizar o acompanhamento <span>sem automatizar</span> o relacionamento humano.”</p>
+  </div>
+</section>
+
+<!-- ==================== 12 · INVESTIMENTO ==================== -->
+<section class="sec break" id="s12">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>12 · Investimento</span>
+      <h2>Investimento do <span class="hl">projeto</span></h2>
+    </div>
+    <div class="inv-grid rev">
+      <div class="inv"><span class="k">Implantação</span><p class="v">R$ 2.000,00</p><p class="d">Configuração, estruturação e implantação da Fase 1 do projeto.</p></div>
+      <div class="inv"><span class="k">Mensalidade</span><p class="v">R$ 200,00<small>/mês</small></p><p class="d">Valor recorrente referente à utilização da solução após a implantação.</p></div>
+      <div class="inv sum"><span class="k" style="color:rgba(255,255,255,.55)">Resumo do investimento</span>
+        <p class="v" style="margin-top:14px"><em>R$ 2.000,00</em> implantação &nbsp;·&nbsp; <em>+ R$ 200,00/mês</em> mensalidade &nbsp;·&nbsp; <em>+ mensageria Meta</em> conforme utilização</p>
+      </div>
+    </div>
+    <div class="note rev" style="max-width:760px;margin:24px auto 0;text-align:center"><strong>Os valores serão acrescentados à fatura atual da Drogaria Beta Farma com a Único Contato.</strong> A mensalidade de R$ 200,00 é adicional ao valor que a empresa já paga atualmente.</div>
+  </div>
+</section>
+
+<!-- ==================== 13 · INCLUÍDO ==================== -->
+<section class="sec" id="s13">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="badge"><i></i>13 · Entregas</span>
+      <h2>O que está <span class="hl">incluído</span></h2>
+    </div>
+    <ul class="inc rev" style="max-width:880px;margin:0 auto">
+      <li><svg><use href="#i-check"/></svg>Estruturação da jornada de reativação</li>
+      <li><svg><use href="#i-check"/></svg>Estruturação das jornadas de pós-venda</li>
+      <li><svg><use href="#i-check"/></svg>Configuração das cadências</li>
+      <li><svg><use href="#i-check"/></svg>Ajuste dos intervalos</li>
+      <li><svg><use href="#i-check"/></svg>Configuração dos textos / abordagens</li>
+      <li><svg><use href="#i-check"/></svg>Aplicação nos 4 números contemplados</li>
+      <li style="grid-column:1/-1"><svg><use href="#i-check"/></svg>Testes e ajustes necessários à implantação</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== 14 · EVOLUÇÃO ==================== -->
+<section class="sec break" id="s14">
+  <div class="wrap">
+    <div class="navy rev">
+      <div style="text-align:center;margin-bottom:40px">
+        <span class="badge" style="background:rgba(34,197,94,.16)"><i></i>14 · Evolução futura</span>
+        <h2 style="font-size:32px;font-weight:800;letter-spacing:-.02em;margin-top:18px">Próximas <span style="color:var(--green)">possibilidades</span></h2>
+      </div>
+      <div class="fut-grid">
+        <div class="fut"><span class="n">01</span><h3>Histórico de compras Alpha 7</h3><p>Consulta automática ao histórico de compras do cliente.</p></div>
+        <div class="fut"><span class="n">02</span><h3>Jornadas personalizadas</h3><p>Jornadas com base no histórico real do cliente.</p></div>
+        <div class="fut"><span class="n">03</span><h3>IA para atendimento inicial</h3><p>Inteligência artificial apoiando a primeira camada do atendimento.</p></div>
+        <div class="fut"><span class="n">04</span><h3>Catálogo digital</h3><p>Catálogo de produtos integrado à conversa.</p></div>
+        <div class="fut"><span class="n">05</span><h3>Banco de imagens e informações</h3><p>Base organizada de imagens e informações de produtos.</p></div>
+        <div class="fut"><span class="n">06</span><h3>Expansão para outras lojas</h3><p>Levar a operação para novas unidades do grupo.</p></div>
+      </div>
+      <p style="text-align:center;margin-top:30px;font:600 13px 'Manrope';letter-spacing:.06em;color:rgba(255,255,255,.65)">Essas funcionalidades não fazem parte do investimento desta primeira fase.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 15 · FLUXOGRAMA ==================== -->
+<section class="sec" id="s15">
+  <div class="wrap">
+    <div class="flow-cta rev">
+      <span class="badge"><i></i>15 · Material complementar</span>
+      <p style="margin-top:16px;font-size:15px;color:rgba(13,13,13,.7);font-weight:600">Representação visual completa das jornadas, decisões e interrupções do projeto.</p>
+      <a class="btn" href="https://unico-contato.staticdomains.app/gemini-code-1790962837300.html" target="_blank" rel="noopener">VER FLUXOGRAMA DO PROJETO <span class="ar">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 16 · ENCERRAMENTO ==================== -->
+<section class="sec break" id="s16" style="padding-bottom:64px">
+  <div class="wrap">
+    <div class="navy close rev">
+      <span class="badge" style="background:rgba(34,197,94,.16)"><i></i>16 · Encerramento</span>
+      <p style="margin-top:26px">A primeira fase foi desenhada para atacar diretamente as duas prioridades identificadas pela Beta Farma: <span>reativação e pós-venda</span>.</p>
+      <p>A partir dessa base, a operação poderá evoluir gradualmente para integrações, jornadas e automações mais avançadas.</p>
+      <div class="sig">
+        <img alt="Único Contato" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20880%20400'%3E%3Cg%20fill='none'%20stroke='%230D2240'%20stroke-width='26'%3E%3Ccircle%20cx='190'%20cy='200'%20r='112'/%3E%3Ccircle%20cx='190'%20cy='200'%20r='64'/%3E%3C/svg%3E%3Cg%20stroke='%23FFFFFF'%20stroke-width='16'%3E%3Cpath%20d='M190%2082v236M78%20200h224'/%3E%3C/svg%3E%3Cg%20fill='%230D2240'%20font-family='Arial,%20Helvetica,%20sans-serif'%20font-weight='800'%3E%3Ctext%20x='330'%20y='152'%20font-size='58'%20letter-spacing='10'%3EGRUPO%3C/text%3E%3Ctext%20x='326'%20y='252'%20font-size='104'%20letter-spacing='4'%3E%C3%9ANICO%3C/text%3E%3Ctext%20x='332'%20y='308'%20font-size='50'%20letter-spacing='2'%3ECONTATO%3C/text%3E%3C/svg%3E">
+        <p class="a">Único Contato</p>
+        <p class="b">Projeto CRM · Drogaria Beta Farma</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">Único Contato — Projeto CRM · Pós-venda e Reativação · Drogaria Beta Farma · Fase 1</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rev');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('on')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
